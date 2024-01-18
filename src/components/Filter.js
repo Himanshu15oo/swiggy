@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { createContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function Filter({ area, setFilteredData, checkedArea, setCheckedArea }) {
   const [sort, setSort] = useState("");
@@ -36,14 +36,18 @@ function Filter({ area, setFilteredData, checkedArea, setCheckedArea }) {
 
   const expandArea = () => {
     const areaDropDown = document.querySelector(".filter-list");
+    const sortDropDown = document.querySelector(".sort-list");
     areaDropDown.classList.toggle("hidden");
+    sortDropDown.classList.add("hidden");
     // areaDropDown.classList.toggle("flex");
     // console.log(areaDropDown);
   };
 
   const expandSort = () => {
-    const areaDropDown = document.querySelector(".sort-list");
-    areaDropDown.classList.toggle("hidden");
+    const areaDropDown = document.querySelector(".filter-list");
+    const sortDropDown = document.querySelector(".sort-list");
+    areaDropDown.classList.add("hidden");
+    sortDropDown.classList.toggle("hidden");
   };
 
   const changeArea = (e) => {
