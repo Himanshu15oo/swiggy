@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "/Users/himanshu/Desktop/swiggy/src/logo.png";
 
 function Header() {
+  const [search, setSearch] = useState("");
+
   return (
     <div className="header">
       <img className="img" src={logo} alt="logo" />
@@ -10,6 +12,8 @@ function Header() {
           className="search"
           type="text"
           placeholder="Search for restaurant and food"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
         />
         <span className="search-icon">
           <svg

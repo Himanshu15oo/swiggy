@@ -26,6 +26,22 @@ function Filter() {
             </svg>
           </span>
         </div>
+        <div className="filter-list">
+          <ul>
+            <li>
+              <input type="text" />
+            </li>
+            <li>
+              <input type="text" />
+            </li>
+            <li>
+              <input type="text" />
+            </li>
+            <li>
+              <input type="text" />
+            </li>
+          </ul>
+        </div>
         <div className="filter-btn">
           Sort By
           <span className="filter-icon">
