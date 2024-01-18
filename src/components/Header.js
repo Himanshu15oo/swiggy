@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "/Users/himanshu/Desktop/swiggy/src/logo.png";
+import logo from "../logo.png";
 
 function Header() {
   const [search, setSearch] = useState("");
