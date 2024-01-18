@@ -1,13 +1,70 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.body {
+  @apply bg-gray-50 h-screen;
+}
+/* Header styles start */
+.header {
+  @apply sticky top-0 bg-white flex flex-col gap-4 justify-center items-center p-4 shadow-sm md:px-36 md:py-4 md:flex-row md:justify-between;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.img {
+  @apply w-40;
 }
+
+.search-container {
+  @apply relative inline-block;
+}
+
+.search {
+  @apply bg-gray-200 w-[300px] h-[40px] px-4 text-xs rounded-md border-2;
+}
+
+.search-icon {
+  @apply absolute text-gray-400  top-2 right-2;
+}
+
+/* Header styles end */
+
+/* Filter styles start  */
+
+.filter-container {
+  @apply flex flex-col items-start p-4 md:px-52 md:py-4;
+}
+
+.filter-header {
+  @apply text-2xl font-bold;
+}
+
+.filter-btn-container {
+  @apply py-4 flex flex-row flex-wrap gap-4;
+}
+
+.filter-btn {
+  @apply flex py-1 px-2 md:px-4 md:py-2 border-gray-300 border-[1px] rounded-full text-sm cursor-pointer shadow-md;
+}
+
+.filter-icon {
+  @apply ml-2;
+}
+/* Filter styles end  */
+
+/* DataGrid styles start  */
+.datagrid-container {
+  @apply grid grid-cols-1 md:grid-cols-4 p-4 md:px-52 md:py-4;
+}
+
+.grid-card {
+  @apply max-w-sm rounded-2xl overflow-hidden;
+}
+
+.card-img {
+  @apply w-full h-36 rounded-2xl object-cover shadow-lg;
+}
+
+.card-body {
+  @apply px-6 py-2 bg-gray-50;
+}
+/* DataGrid styles end  */
