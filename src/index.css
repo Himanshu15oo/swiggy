@@ -1,13 +1,110 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .inner-bottom-shadow {
+    box-shadow: inset 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.body {
+  @apply bg-gray-50 h-screen;
+}
+/* Header styles start */
+.header {
+  @apply sticky z-50 top-0 bg-white flex flex-col gap-4 justify-center items-center p-4 shadow-sm md:px-36 md:py-4 md:flex-row md:justify-between;
+}
+
+.img {
+  @apply w-40;
+}
+
+.search-container {
+  @apply relative inline-block;
+}
+
+.search {
+  @apply bg-gray-200 w-[300px] h-[40px] px-4 text-sm rounded-md border-2;
+}
+
+.search-icon {
+  @apply absolute text-gray-400  top-2 right-2;
+}
+
+/* Header styles end */
+
+/* Filter styles start  */
+
+.filter-container {
+  @apply flex flex-col items-start p-4 md:px-52 md:py-4;
+}
+
+.filter-header {
+  @apply text-xl md:text-2xl font-bold;
+}
+
+.filter-btn-container {
+  @apply relative py-4 flex flex-row flex-wrap gap-4;
+}
+
+.filter-btn {
+  @apply flex py-1 px-2 md:px-4 md:py-2 border-gray-300 border-[1px] rounded-full text-sm cursor-pointer shadow-md;
+}
+
+.filter-icon {
+  @apply ml-2;
+}
+
+.filter-list {
+  @apply absolute h-80 overflow-scroll z-10 top-14 md:top-16 bg-white w-1/2 md:w-1/4 px-4 py-2 rounded-xl shadow-md;
+}
+
+.filter-list-labels {
+  @apply ml-2;
+}
+
+.sort-list {
+  @apply absolute h-80 overflow-scroll z-10 top-14 left-28 md:top-16 bg-white w-1/2 md:w-1/4 px-4 py-2 rounded-xl shadow-md;
+}
+
+.sort-list-labels {
+  @apply ml-2;
+}
+/* Filter styles end  */
+
+/* DataGrid styles start  */
+.datagrid-container {
+  @apply grid grid-cols-1 gap-8 md:grid-cols-4 p-4 md:px-52 md:py-4;
+}
+
+.grid-card {
+  @apply relative w-full h-full rounded-2xl transform hover:scale-95 transition ease-in-out duration-200;
+}
+
+.card-img {
+  @apply w-full h-40 rounded-2xl object-cover shadow-md inner-bottom-shadow;
+}
+
+.card-span {
+  @apply w-full pb-1 absolute bottom-[35%] left-0 bg-gradient-to-t from-black text-white text-xl font-extrabold rounded-b-2xl;
+}
+
+.card-body {
+  @apply px-2 pt-3 flex flex-col items-start;
+}
+
+.card-title {
+  @apply text-lg font-bold text-nowrap text-gray-700;
+}
+.card-time {
+  @apply flex items-center text-base font-semibold text-gray-700;
+}
+.card-desc {
+  @apply text-base text-gray-500 font-light;
+}
+/* DataGrid styles end  */
+
+.footer {
+  @apply flex items-start px-16 py-4 bg-black h-20 text-white text-xl font-bold;
 }
