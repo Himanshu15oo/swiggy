@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-function DataGrid({ filteredData, setFoodItems }) {
+function DataGrid({ filteredData, checkedArea }) {
   //   useEffect(() => {}, [filteredData]);
 
   return (
@@ -32,7 +32,9 @@ function DataGrid({ filteredData, setFoodItems }) {
                 </svg>
                 4 . 43 mins
               </p>
-              <p className="card-desc">{item.strArea}</p>
+              <p className="card-desc">
+                {item.strArea ? item.strArea : checkedArea}
+              </p>
             </div>
           </div>
         );

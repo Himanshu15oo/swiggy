@@ -1,8 +1,7 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
-function Filter({ area, setFilteredData }) {
-  const [checkedArea, setCheckedArea] = useState("American");
+function Filter({ area, setFilteredData, checkedArea, setCheckedArea }) {
   const [sort, setSort] = useState("");
   const [loading, setLoading] = useState(false);
 

@@ -4,10 +4,12 @@ import Filter from "./components/Filter";
 import DataGrid from "./components/DataGrid";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Footer from "./components/Footer";
 
 function App() {
   const [area, setArea] = useState([]);
-  const [foodItems, setFoodItems] = useState([]);
+  const [checkedArea, setCheckedArea] = useState("American");
+  // const [foodItems, setFoodItems] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
@@ -26,9 +28,15 @@ function App() {
     <div className="App">
       <Header />
       <div className="body">
-        <Filter area={area} setFilteredData={setFilteredData} />
-        <DataGrid filteredData={filteredData} setFoodItems={setFoodItems} />
+        <Filter
+          area={area}
+          setFilteredData={setFilteredData}
+          checkedArea={checkedArea}
+          setCheckedArea={setCheckedArea}
+        />
+        <DataGrid filteredData={filteredData} checkedArea={checkedArea} />
       </div>
+      <Footer />
     </div>
   );
 }

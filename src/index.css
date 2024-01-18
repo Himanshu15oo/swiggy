@@ -104,3 +104,7 @@
   @apply text-base text-gray-500 font-light;
 }
 /* DataGrid styles end  */
+
+.footer {
+  @apply flex items-start px-16 py-4 bg-black h-20 text-white text-xl font-bold;
+}
