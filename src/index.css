@@ -57,7 +57,19 @@
 }
 
 .filter-list {
-  @apply absolute z-10 top-16;
+  @apply absolute h-80 overflow-scroll z-10 top-14 md:top-16 bg-white w-1/2 md:w-1/4 px-4 py-2 rounded-xl shadow-md;
+}
+
+.filter-list-labels {
+  @apply ml-2;
+}
+
+.sort-list {
+  @apply absolute h-28 overflow-scroll z-10 top-14 left-28 md:top-16 bg-white w-1/2 md:w-1/4 px-4 py-2 rounded-xl shadow-md;
+}
+
+.sort-list-labels {
+  @apply ml-2;
 }
 /* Filter styles end  */
 

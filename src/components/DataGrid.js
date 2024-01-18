@@ -1,25 +1,12 @@
 import React, { useEffect, useState } from "react";
-import trial from "../trial.avif";
 import axios from "axios";
 
-function DataGrid() {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("https://www.themealdb.com/api/json/v1/1/search.php?f=a")
-      .then((res) => {
-        setData(res.data.meals);
-        // console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+function DataGrid({ filteredData, setFoodItems }) {
+  //   useEffect(() => {}, [filteredData]);
 
   return (
     <div className="datagrid-container">
-      {data.map((item) => {
+      {filteredData.map((item) => {
         return (
           <div key={item.idMeal} className="grid-card">
             <img
