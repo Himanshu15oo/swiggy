@@ -107,7 +107,7 @@
 }
 
 .modal-container {
-  @apply z-40 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-[60%] h-[80%] md:h-[600px] bg-gray-100 rounded-xl overflow-scroll shadow-2xl;
+  @apply z-40 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-[60%] h-[80%] md:h-[80%] bg-gray-100 rounded-xl overflow-scroll shadow-2xl;
 }
 
 .modal-close {
