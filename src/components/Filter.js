@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 
 function Filter({
   area,
+  filteredData,
   setFilteredData,
   checkedArea,
   setCheckedArea,
@@ -10,25 +11,21 @@ function Filter({
 }) {
   const [sort, setSort] = useState("");
 
-  //   For alphabetic sorting list
-  const alphabets = Array.from({ length: 26 }, (_, index) =>
-    String.fromCharCode("A".charCodeAt(0) + index)
-  );
-
   useEffect(() => {
     var apiUrl = "";
     setLoading(true);
     // Append selected areas to the API URL
-    if (checkedArea) {
-      apiUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${checkedArea}`;
-    } else {
-      apiUrl = `https://www.themealdb.com/api/json/v1/1/search.php?f=${sort}`;
-    }
+    // if (checkedArea) {
+    apiUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${checkedArea}`;
+    // } else {
+    //   apiUrl = `https://www.themealdb.com/api/json/v1/1/search.php?f=${sort}`;
+    // }
+
     console.log(apiUrl);
     axios
       .get(apiUrl)
       .then((res) => {
-        // console.log(res);
+        // console.log(res.data.meals);
         setFilteredData(res.data.meals);
       })
       .catch((err) => {
@@ -37,7 +34,22 @@ function Filter({
       .finally(() => {
         setLoading(false); // Set loading to false after the request is complete
       });
-  }, [checkedArea, sort, setFilteredData, setLoading]);
+  }, [checkedArea, setFilteredData, setLoading]);
+
+  const sortData = (data, sortType) => {
+    var sortedData = [];
+    if (sortType === "a-z") {
+      sortedData = [...data].sort((a, b) =>
+        a.strMeal.localeCompare(b.strMeal, "en", { sensitivity: "base" })
+      );
+    } else if (sortType === "z-a") {
+      sortedData = [...data].sort((a, b) =>
+        b.strMeal.localeCompare(a.strMeal, "en", { sensitivity: "base" })
+      );
+    }
+    console.log(sortData);
+    setFilteredData(sortedData);
+  };
 
   const expandArea = () => {
     const areaDropDown = document.querySelector(".filter-list");
@@ -66,7 +78,8 @@ function Filter({
     const name = e.target.value;
     // console.log("check box:", name);
     setSort(name);
-    setCheckedArea("");
+    sortData(filteredData, name);
+    // setCheckedArea("");
   };
 
   return (
@@ -135,7 +148,7 @@ function Filter({
           </button>
           <div className="sort-list hidden">
             <ul className="flex flex-col items-start">
-              {alphabets.map((alphabet) => (
+              {/* {alphabets.map((alphabet) => (
                 <li key={alphabet}>
                   <input
                     type="checkbox"
@@ -145,7 +158,25 @@ function Filter({
                   />
                   <label className="sort-list-labels">{alphabet}</label>
                 </li>
-              ))}
+              ))} */}
+              <li key="a-z">
+                <input
+                  type="checkbox"
+                  value="a-z"
+                  onChange={changeSort}
+                  checked={sort === "a-z"}
+                />
+                <label className="sort-list-labels">A-Z</label>
+              </li>
+              <li key="z-a">
+                <input
+                  type="checkbox"
+                  value="z-a"
+                  onChange={changeSort}
+                  checked={sort === "z-a"}
+                />
+                <label className="sort-list-labels">Z-A</label>
+              </li>
             </ul>
           </div>
           <div className="filter-btn">Fast Delivery</div>

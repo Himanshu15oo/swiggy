@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "./Modal";
 
 function DataGrid({ filteredData, checkedArea }) {
   const [selectedID, setSelectedID] = useState("");
   const [modal, setModal] = useState(false);
+
+  useEffect(() => {}, [filteredData]);
 
   const handleDivClick = (ID) => {
     // const modal = document.querySelector(".modal-container");

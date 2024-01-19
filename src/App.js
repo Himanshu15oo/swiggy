@@ -32,6 +32,7 @@ function App() {
       <div className="body">
         <Filter
           area={area}
+          filteredData={filteredData}
           setFilteredData={setFilteredData}
           checkedArea={checkedArea}
           setCheckedArea={setCheckedArea}
