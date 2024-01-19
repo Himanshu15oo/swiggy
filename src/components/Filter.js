@@ -1,9 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-function Filter({ area, setFilteredData, checkedArea, setCheckedArea }) {
+function Filter({
+  area,
+  setFilteredData,
+  checkedArea,
+  setCheckedArea,
+  setLoading,
+}) {
   const [sort, setSort] = useState("");
-  const [loading, setLoading] = useState(false);
 
   //   For alphabetic sorting list
   const alphabets = Array.from({ length: 26 }, (_, index) =>
@@ -32,7 +37,7 @@ function Filter({ area, setFilteredData, checkedArea, setCheckedArea }) {
       .finally(() => {
         setLoading(false); // Set loading to false after the request is complete
       });
-  }, [checkedArea, sort]);
+  }, [checkedArea, sort, setFilteredData, setLoading]);
 
   const expandArea = () => {
     const areaDropDown = document.querySelector(".filter-list");
@@ -149,7 +154,6 @@ function Filter({ area, setFilteredData, checkedArea, setCheckedArea }) {
           <div className="filter-btn">Offer</div>
         </div>
       </div>
-      {loading && <div className="loader">Loading...</div>}
     </>
   );
 }

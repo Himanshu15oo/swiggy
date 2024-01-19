@@ -12,6 +12,7 @@ function App() {
   const [checkedArea, setCheckedArea] = useState("American");
   // const [foodItems, setFoodItems] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     axios
@@ -34,8 +35,13 @@ function App() {
           setFilteredData={setFilteredData}
           checkedArea={checkedArea}
           setCheckedArea={setCheckedArea}
+          setLoading={setLoading}
         />
-        <DataGrid filteredData={filteredData} checkedArea={checkedArea} />
+        {loading ? (
+          <Loader />
+        ) : (
+          <DataGrid filteredData={filteredData} checkedArea={checkedArea} />
+        )}
       </div>
       <Footer />
     </div>

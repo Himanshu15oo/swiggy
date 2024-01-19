@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import Modal from "./Modal";
 
 function DataGrid({ filteredData, checkedArea }) {
-  const modalRef = useRef();
   const [selectedID, setSelectedID] = useState("");
   const [modal, setModal] = useState(false);
 
