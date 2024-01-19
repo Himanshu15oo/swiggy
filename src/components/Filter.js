@@ -1,5 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { ReactComponent as SortIcon } from "../sortIcon.svg";
+import { ReactComponent as FilterIcon } from "../filterIcon.svg";
+import FilterTag from "./FilterTag";
+// import FilterIcon from "../filterIcon.svg";
 
 function Filter({
   area,
@@ -9,7 +13,7 @@ function Filter({
   setCheckedArea,
   setLoading,
 }) {
-  const [sort, setSort] = useState("");
+  const [sort, setSort] = useState("a-z");
 
   useEffect(() => {
     var apiUrl = "";
@@ -47,7 +51,7 @@ function Filter({
         b.strMeal.localeCompare(a.strMeal, "en", { sensitivity: "base" })
       );
     }
-    console.log(sortData);
+    // console.log(sortData);
     setFilteredData(sortedData);
   };
 
@@ -55,7 +59,7 @@ function Filter({
     const areaDropDown = document.querySelector(".filter-list");
     const sortDropDown = document.querySelector(".sort-list");
     areaDropDown.classList.toggle("hidden");
-    sortDropDown.classList.add("hidden");
+    // sortDropDown.classList.add("hidden");
     // areaDropDown.classList.toggle("flex");
     // console.log(areaDropDown);
   };
@@ -63,7 +67,7 @@ function Filter({
   const expandSort = () => {
     const areaDropDown = document.querySelector(".filter-list");
     const sortDropDown = document.querySelector(".sort-list");
-    areaDropDown.classList.add("hidden");
+    // areaDropDown.classList.add("hidden");
     sortDropDown.classList.toggle("hidden");
   };
 
@@ -71,7 +75,7 @@ function Filter({
     const name = e.target.value;
     // console.log("check box:", name);
     setCheckedArea(name);
-    setSort("");
+    setSort("a-z");
   };
 
   const changeSort = (e) => {
@@ -127,6 +131,27 @@ function Filter({
               })}
             </ul>
           </div>
+          {/* <FilterTag
+            elementName={"filter"}
+            icon={<FilterIcon />}
+            data={area}
+            value={"strArea"}
+            checkList={checkedArea}
+            setCheckList={setCheckedArea}
+          >
+            Filter
+          </FilterTag> */}
+          {/* <FilterTag
+            elementName={"sort"}
+            icon={<SortIcon />}
+            // data is an array of objects
+            data={[{ value: "A-Z" }, { value: "Z-A" }]}
+            value={"value"}
+            checkList={sort}
+            setCheckList={setSort}
+          >
+            Sort By
+          </FilterTag> */}
           <button className="filter-btn" onClick={expandSort}>
             Sort By
             <span className="filter-icon">
@@ -148,17 +173,6 @@ function Filter({
           </button>
           <div className="sort-list hidden">
             <ul className="flex flex-col items-start">
-              {/* {alphabets.map((alphabet) => (
-                <li key={alphabet}>
-                  <input
-                    type="checkbox"
-                    value={alphabet}
-                    onChange={changeSort}
-                    checked={sort === alphabet}
-                  />
-                  <label className="sort-list-labels">{alphabet}</label>
-                </li>
-              ))} */}
               <li key="a-z">
                 <input
                   type="checkbox"

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
+import ReactPaginate from "react-paginate";
 import Modal from "./Modal";
 
 function DataGrid({ filteredData, checkedArea }) {
   const [selectedID, setSelectedID] = useState("");
   const [modal, setModal] = useState(false);
-
-  useEffect(() => {}, [filteredData]);
 
   const handleDivClick = (ID) => {
     // const modal = document.querySelector(".modal-container");
@@ -15,10 +14,43 @@ function DataGrid({ filteredData, checkedArea }) {
     setModal(true);
   };
 
+  const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = 8;
+
+  const endOffset = itemOffset + itemsPerPage;
+  // console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+  const currentItems = filteredData.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(filteredData.length / itemsPerPage);
+
+  // Invoke when user click to request another page.
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % filteredData.length;
+    // console.log(
+    //   `User requested page number ${event.selected}, which is offset ${newOffset}`
+    // );
+    setItemOffset(newOffset);
+  };
+
   return (
     <>
+      <ReactPaginate
+        breakLabel={<span className="break">...</span>}
+        nextLabel=">"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={2}
+        pageCount={pageCount}
+        previousLabel="<"
+        renderOnZeroPageCount={null}
+        containerClassName="pagination-container"
+        pageClassName="page"
+        pageLinkClassName="page-links"
+        activeClassName="active-page" // Add this line for the active page link
+        breakClassName="break" // Add this line for the ellipsis
+        previousClassName="page prev-btn"
+        nextClassName="page next-btn"
+      />
       <div className="datagrid-container">
-        {filteredData.map((item) => {
+        {currentItems.map((item) => {
           return (
             <div
               key={item.idMeal}
@@ -30,7 +62,7 @@ function DataGrid({ filteredData, checkedArea }) {
                 src={item.strMealThumb}
                 alt="Sunset in the mountains"
               />
-              <span className="card-span">$120 off above $190</span>
+              <span className="card-span">₹120 off above ₹190</span>
               <div className="card-body">
                 <p className="card-title">{item.strMeal}</p>
                 <p className="card-time">
@@ -64,7 +96,6 @@ function DataGrid({ filteredData, checkedArea }) {
       ) : (
         ""
       )}
-      .
     </>
   );
 }

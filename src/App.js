@@ -12,6 +12,7 @@ function App() {
   const [checkedArea, setCheckedArea] = useState("American");
   // const [foodItems, setFoodItems] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
