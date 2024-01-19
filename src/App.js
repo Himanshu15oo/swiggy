@@ -5,6 +5,7 @@ import DataGrid from "./components/DataGrid";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Footer from "./components/Footer";
+import Loader from "./components/Loader";
 
 function App() {
   const [area, setArea] = useState([]);

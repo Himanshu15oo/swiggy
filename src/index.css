@@ -2,18 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .inner-bottom-shadow {
-    box-shadow: inset 0 10px 10px -10px rgba(0, 0, 0, 0.5);
-  }
-}
-
 .body {
   @apply bg-gray-50 min-h-screen max-h-full;
 }
 /* Header styles start */
 .header {
-  @apply sticky z-50 top-0 bg-white flex flex-col gap-4 justify-center items-center p-4 shadow-sm md:px-36 md:py-4 md:flex-row md:justify-between;
+  @apply sticky z-10 top-0 bg-white flex flex-col gap-4 justify-center items-center p-4 shadow-sm md:px-36 md:py-4 md:flex-row md:justify-between;
 }
 
 .img {
@@ -83,7 +77,7 @@
 }
 
 .card-img {
-  @apply w-full h-40 rounded-2xl object-cover shadow-md inner-bottom-shadow;
+  @apply w-full h-40 rounded-2xl object-cover shadow-md;
 }
 
 .card-span {
@@ -103,7 +97,47 @@
 .card-desc {
   @apply text-base text-gray-500 font-light;
 }
+
 /* DataGrid styles end  */
+
+/* Modal styles begin  */
+
+.overlay {
+  @apply fixed z-30 top-0 left-0 w-full h-full bg-gray-900 bg-opacity-80;
+}
+
+.modal-container {
+  @apply z-40 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-[60%] h-[80%] md:h-[600px] bg-gray-100 rounded-xl overflow-scroll shadow-2xl;
+}
+
+.modal-close {
+  @apply z-50 fixed top-[7.5%] right-[2%] md:top-[7%] md:right-[18.5%] bg-gray-200 rounded-full p-2;
+}
+
+.modal-img {
+  @apply h-[300px] w-full object-cover shadow-lg;
+}
+
+.modal-title {
+  @apply flex flex-col md:flex-row md:justify-between p-4 text-xl font-bold text-nowrap overflow-hidden text-start text-gray-700 border-b-2 border-gray-200;
+}
+
+.modal-data {
+  @apply flex flex-col px-4 py-4 gap-2 md:py-8 md:grid md:grid-cols-5 text-sm text-start items-stretch;
+}
+
+.modal-mini-title {
+  @apply flex md:col-span-1 md:justify-end md:px-4 md:text-base font-semibold text-gray-700;
+}
+
+.modal-text {
+  @apply mt-0 md:col-span-4 md:pr-10 md:text-base text-justify whitespace-pre-wrap text-gray-500 font-normal;
+}
+
+.modal-ingredient {
+  @apply list-disc px-4;
+}
+/* Modal styles end  */
 
 .footer {
   @apply flex bottom-0 items-start px-16 py-4 bg-black h-20 text-white text-xl font-bold;
