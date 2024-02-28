@@ -25,6 +25,20 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+
+    <script>
+      (function (w) {
+        var k = "nudgify",
+          n = w[k] || (w[k] = {});
+        n.uuid = "5e10f0a4-2b40-46ec-baf7-d87524e6aedb";
+        var d = document,
+          s = d.createElement("script");
+        s.src = "https://pixel.nudgify.com/pixel.js";
+        s.async = 1;
+        s.charset = "utf-8";
+        d.getElementsByTagName("head")[0].appendChild(s);
+      })(window);
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
